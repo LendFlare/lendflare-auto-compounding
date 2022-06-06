@@ -40,10 +40,7 @@ interface ILendingMarket {
         uint256 _supportPid
     ) external payable;
 
-    function getUserLastLending(address _user)
-        external
-        view
-        returns (UserLending memory);
+    function getUserLastLending(address _user) external view returns (UserLending memory);
 
     function repayBorrow(bytes32 _lendingId) external payable;
 
@@ -51,20 +48,15 @@ interface ILendingMarket {
 
     function withdraw(uint256 _pid, uint256 _token0) external;
 
+    function liquidate(bytes32 _lendingId, uint256 _extraErc20Amount) external payable;
+
     function poolInfo(uint256 _pid) external view returns (PoolInfo memory);
 
-    function getPoolSupportPid(uint256 _pid, uint256 _supportPid)
-        external
-        view
-        returns (uint256);
+    function getPoolSupportPid(uint256 _pid, uint256 _supportPid) external view returns (uint256);
 
-    function getPoolSupportPids(uint256 _pid)
-        external
-        view
-        returns (uint256[] memory);
+    function getPoolSupportPids(uint256 _pid) external view returns (uint256[] memory);
 
-    function getCurveCoinId(uint256 _pid, uint256 _supportPid)
-        external
-        view
-        returns (int128);
+    function getCurveCoinId(uint256 _pid, uint256 _supportPid) external view returns (int128);
+
+    function getUserLendingsLength(address _user) external view returns (uint256);
 }
